@@ -1,6 +1,24 @@
 import Algorithmia
+from Algorithmia.errors import AlgorithmException
 
-# API calls will begin at the apply() method, with the request body passed as 'input'
-# For more details, see algorithmia.com/developers/algorithm-development/languages
+
+def sanity(input):
+    """boilerplate input sanity check.
+    see:
+    https://algorithmia.com/developers/algorithm-development/algorithm-basics/algorithm-errors/
+    https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/errors.py
+    """
+    if type(input) is not dict:
+        raise AlgorithmException("Only JSON accepted", "UnsupportedError")
+    if 'images' not in input:
+        raise AlgorithmException("Must specify image(s)", "InputError")
+    images = input['images']
+    if not (type(images) is list or images is str):
+        raise AlgorithmException("Must specifiy image(s)", "InputError")
+    if len(images) == 0:
+        raise AlgorithmException("Must specify image(s)", "InputError")
+
+
 def apply(input):
-    return "hello {}".format(input)
+    sanity(input)
+    return {}
