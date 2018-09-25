@@ -9,14 +9,15 @@ def sanity(input):
     https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/errors.py
     """
     if type(input) is not dict:
-        raise AlgorithmException("Only JSON accepted", "UnsupportedError")
+        raise AlgorithmException("Only JSON accepted", 'UnsupportedError')
     if 'images' not in input:
-        raise AlgorithmException("Must specify image(s)", "InputError")
+        raise AlgorithmException("Must specify image(s)", 'InputError')
     images = input['images']
-    if not (type(images) is list or images is str):
-        raise AlgorithmException("Must specifiy image(s)", "InputError")
+    if not (type(images) is list or type(images) is str):
+        print(type(images))
+        raise AlgorithmException("Must specify image(s)", 'InputError')
     if len(images) == 0:
-        raise AlgorithmException("Must specify image(s)", "InputError")
+        raise AlgorithmException("Must specify image(s)", 'InputError')
 
 
 def apply(input):
