@@ -46,8 +46,8 @@ def segment_images(src, dst):
         dst_dir.create()
     for src in src_dir.files():
         # just copy for now...
-        src_name = src.getName()
-        algo_client.file(dst+"/"+sub("^.*/", "", src_name)).putFile(src)
+        local_src = src.path
+        algo_client.file(dst+"/"+sub("^.*/", "", local_src)).putFile(local_src)
 
 
 def sanity(input):
