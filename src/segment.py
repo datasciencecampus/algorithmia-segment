@@ -12,12 +12,6 @@ def sanity(input):
         raise AlgorithmException("Only JSON accepted", 'UnsupportedError')
     if 'images' not in input:
         raise AlgorithmException("Must specify image(s)", 'InputError')
-    images = input['images']
-    if not (type(images) is list or type(images) is str):
-        print(type(images))
-        raise AlgorithmException("Must specify image(s)", 'InputError')
-    if len(images) == 0:
-        raise AlgorithmException("Must specify image(s)", 'InputError')
 
 
 def apply(input):
