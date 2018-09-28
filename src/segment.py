@@ -10,10 +10,14 @@ def sanity(input):
     """
     if type(input) is not dict:
         raise AlgorithmException("Only JSON accepted", 'UnsupportedError')
-    if 'images' not in input:
-        raise AlgorithmException("Must specify image(s)", 'InputError')
+    if 'src' not in input:
+        raise AlgorithmException("Must specify source image dir", 'InputError')
+    if 'dst' not in input:
+        raise AlgorithmException("Must specify destination dir", 'InputError')
 
 
 def apply(input):
     sanity(input)
+    src, dst = input['src'], input['dst']
+
     return {}

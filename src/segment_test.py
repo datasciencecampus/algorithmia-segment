@@ -10,8 +10,12 @@ def test_boilerplate():
     
     with raises(AlgorithmException) as ae:
         segment.apply({})
-    assert ae.value.error_type == 'InputError' and ae.value.message == "Must specify image(s)"
+    assert ae.value.error_type == 'InputError' and ae.value.message == "Must specify source image dir"
+
+    with raises(AlgorithmException) as ae:
+        segment.apply({'src': 'lala'})
+    assert ae.value.error_type == 'InputError' and ae.value.message == "Must specify destination dir"
 
 
 def test_segment():
-    assert segment.apply({'images': "data://.my/images"}) == {}
+    assert segment.apply({'src': 'data://.my/images', 'dst': 'data://.my/segments'}) == {}
