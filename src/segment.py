@@ -16,7 +16,10 @@ from re import sub
 def load(src):
     client = Algorithmia.client()
     model = client.file(src).getFile().name
-    raise Exception(model)
+    
+    import os
+    s = os.path.getsize(model)
+    raise Exception(model + " " + s)
     psp_net = PSPNet(pretrained_model=model)
     #chainer.cuda.get_device_from_id(0).use()
     #psp_net.to_gpu(0)
