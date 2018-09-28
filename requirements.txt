@@ -2,5 +2,5 @@ algorithmia>=1.0.0,<2.0
 six
 chainer
 tqdm
--e git+git://github.com/chainer/chainercv
--e git+git://github.com/chainer/chainermn
+-e git+git://github.com/chainer/chainercv#egg=chainercv
+-e git+git://github.com/chainer/chainermn#egg=chainermn
