@@ -19,7 +19,9 @@ def load(src):
     model = client.file(src).getFile().name
     #s = os.path.getsize(model)
     #assert os.path.getsize(model) == 262925472
-    os.rename(model, "/home/algo/.chainer/dataset/pfnet/chainercv/models/pspnet101_cityscapes_713_reference.npz")
+    pspnet_cache = "/home/algo/chainer/dataset/pfnet/chainercv/models"
+    os.makedirs(pspnet_cache, exist_ok=True)
+    os.rename(model, pspnet_cache+"/pspnet101_cityscapes_713_reference.npz")
     psp_net = PSPNet(pretrained_model='cityscapes')
     #/home/algo/.chainer/dataset/pfnet/chainercv/models
     #psp_net = PSPNet(pretrained_model=model)
