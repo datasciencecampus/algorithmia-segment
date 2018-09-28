@@ -4,9 +4,9 @@ from Algorithmia.errors import AlgorithmException
 import chainer
 from chainercv.utils import read_image
 
-#import sys
-#sys.path.append('pspnet')
-from pspnet.pspnet import PSPNet
+# see caveats section in:
+# https://algorithmia.com/developers/algorithm-development/languages/python/
+from .pspnet.pspnet import PSPNet
 
 from PIL import Image
 from glob import glob
