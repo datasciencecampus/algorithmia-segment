@@ -26,7 +26,8 @@ curl -X POST -d '{"images":["x"]}' -H 'Content-Type: text/json' \
 algo client
 
 ```
-algo run nocturne/segment/$VERSION -d '{"images":["x"]}'
+algo run nocturne/segment/$(git rev-parse HEAD) -d \
+  '{"src": "data://.my/images", "dst": "data://.my/out"}'
 ```
 
 
