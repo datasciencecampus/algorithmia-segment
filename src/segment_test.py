@@ -1,4 +1,8 @@
+import sys
+sys.path.append('chainer-pspnet')
 from . import segment
+
+
 from Algorithmia.errors import AlgorithmException
 from pytest import raises
 

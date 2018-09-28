@@ -1,26 +1,19 @@
 import Algorithmia
 from Algorithmia.errors import AlgorithmException
 
-import sys
-sys.path.append('PSPNet')
-
-import os
 import chainer
 from chainercv.utils import read_image
-from chainercv.visualizations import vis_image
-from chainercv.visualizations import vis_label
-from datasets import ade20k_label_colors
-from datasets import ade20k_label_names
-from datasets import cityscapes_label_colors
-from datasets import cityscapes_label_names
+
+import sys
+sys.path.append('chainer-pspnet')
 from pspnet import PSPNet
-from glob import glob
-import matplotlib.pyplot as plt
+
 from PIL import Image
-import numpy as np
+from glob import glob
+from re import sub
 
 
-def load(src='data://.models/pspnet101_cityscapes_713_reference.npz'):
+def load(src):
     client = Algorithmia.client()
     model = client.file(src).getFile().name
     psp_net = PSPNet(pretrained_model=model)
@@ -29,7 +22,29 @@ def load(src='data://.models/pspnet101_cityscapes_713_reference.npz'):
     return psp_net
 
 # avoid cold start
-psp_net = load()
+psp_net = load('data://.my/models/pspnet101_cityscapes_713_reference.npz')
+
+
+def segment(src, dst):
+    src_img = read_image(src) # (bgr, w, h)
+    psp_out = psp_net.predict([img])[0]
+    psp_out = psp_out.astype('uint8')
+    psp_out = Image.fromarray(psp_out)
+    return psp_out
+
+
+def segment_images(src, dst):
+    algo_client = Algorithmia.client()
+    src_dir = algo_client.dir(src)
+    if not src_dir.exits():
+        raise AlgorithmException("src ({}) does not exist".format(src))
+    dst_dir = algo_client.dir(dst)
+    if not dst_dir.exists():
+        dst_dir.create()
+    for src in src_dir.files():
+        # just copy for now...
+        algo_client.file(dst+"/"+sub("^.*/", "", src.name)).putFile(src.name)
+
 
 def sanity(input):
     """boilerplate input sanity check.
@@ -48,5 +63,10 @@ def sanity(input):
 def apply(input):
     sanity(input)
     src, dst = input['src'], input['dst']
-
-    return {}
+    segment_images(src, dst)
+    return {
+        'status': 'ok',
+        'verbose': {
+            '__name__': __name__
+        }
+    }
