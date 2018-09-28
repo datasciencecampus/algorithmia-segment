@@ -11,14 +11,14 @@ import chainer.functions as F
 import chainer.links as L
 from chainercv.utils import download_model
 
-try:
-    from chainermn.links import MultiNodeBatchNormalization
-except Exception:
-    warnings.warn('To perform batch normalization with multiple GPUs or '
-                  'multiple nodes, MultiNodeBatchNormalization link is '
-                  'needed. Please install ChainerMN: '
-                  'pip install pip install git+git://github.com/chainer/'
-                  'chainermn.git@distributed-batch-normalization')
+#try:
+#    from chainermn.links import MultiNodeBatchNormalization
+#except Exception:
+#    warnings.warn('To perform batch normalization with multiple GPUs or '
+#                  'multiple nodes, MultiNodeBatchNormalization link is '
+#                  'needed. Please install ChainerMN: '
+#                  'pip install pip install git+git://github.com/chainer/'
+#                  'chainermn.git@distributed-batch-normalization')
 
 
 class ConvBNReLU(chainer.Chain):
@@ -34,10 +34,10 @@ class ConvBNReLU(chainer.Chain):
             else:
                 self.conv = L.Convolution2D(
                     in_ch, out_ch, ksize, stride, pad, True, w)
-            if comm is not None:
-                self.bn = MultiNodeBatchNormalization(
-                    out_ch, comm, eps=1e-5, decay=0.95)
-            else:
+#            if comm is not None:
+#                self.bn = MultiNodeBatchNormalization(
+#                    out_ch, comm, eps=1e-5, decay=0.95)
+#            else:
                 self.bn = L.BatchNormalization(out_ch, eps=1e-5, decay=0.95)
 
     def __call__(self, x, relu=True):

@@ -4,4 +4,4 @@ mpi4py
 chainer
 tqdm
 -e git+git://github.com/chainer/chainercv#egg=chainercv
--e git+git://github.com/chainer/chainermn#egg=chainermn
+#-e git+git://github.com/chainer/chainermn#egg=chainermn
