@@ -5,7 +5,7 @@ import chainer
 from chainercv.utils import read_image
 
 import sys
-sys.path.append('chainer-pspnet')
+sys.path.append('pspnet')
 from pspnet import PSPNet
 
 from PIL import Image
