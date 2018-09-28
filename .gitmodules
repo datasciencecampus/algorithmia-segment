@@ -1,0 +1,6 @@
+[submodule "PSPNet"]
+	path = PSPNet
+	url = https://github.com/hszhao/PSPNet.git
+[submodule "src/PSPNet"]
+	path = src/PSPNet
+	url = https://github.com/hszhao/PSPNet.git
