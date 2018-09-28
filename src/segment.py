@@ -11,7 +11,7 @@ from .pspnet.pspnet import PSPNet
 from PIL import Image
 from glob import glob
 from re import sub
-#import os
+import os
 
 
 def load(src):
@@ -19,8 +19,10 @@ def load(src):
     model = client.file(src).getFile().name
     #s = os.path.getsize(model)
     #assert os.path.getsize(model) == 262925472
-    #psp_net = PSPNet(pretrained_model='cityscapes')
-    psp_net = PSPNet(pretrained_model=model)
+    os.rename(model, "/home/algo/.chainer/dataset/pfnet/chainercv/models/pspnet101_cityscapes_713_reference.npz")
+    psp_net = PSPNet(pretrained_model='cityscapes')
+    #/home/algo/.chainer/dataset/pfnet/chainercv/models
+    #psp_net = PSPNet(pretrained_model=model)
     #chainer.cuda.get_device_from_id(0).use()
     #psp_net.to_gpu(0)
     return psp_net
