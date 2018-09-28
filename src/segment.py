@@ -19,7 +19,7 @@ def load(src):
     
     import os
     s = os.path.getsize(model)
-    raise Exception(model + " " + s)
+    raise Exception(model + " " + str(s))
     psp_net = PSPNet(pretrained_model=model)
     #chainer.cuda.get_device_from_id(0).use()
     #psp_net.to_gpu(0)
