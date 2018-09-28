@@ -19,7 +19,7 @@ fi
 
 pip install $extra_args -r requirements.txt --target dependencies
 
-git submodule init
-git submodule update
+#git submodule init
+#git submodule update
 
 zip -r algorithm.zip *

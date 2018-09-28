@@ -5,6 +5,13 @@
 > Part of trees/ungp.
 
 
+## pspnet 
+
+Note that `src/pspnet` is a clone of [mitmul/chainer-pspnet](https://github.com/mitmul/chainer-pspnet).
+Algorithmia build seems not to support git submodules (tried to update `bin/build` with no luck..).
+As such, work-around is to just clone the repo as-is.
+
+
 ## Running
 
 Credentials
