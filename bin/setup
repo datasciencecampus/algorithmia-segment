@@ -59,3 +59,6 @@ apt-get install -y libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasp
 # Install opencv
 /opt/anaconda2/bin/conda install -c https://conda.anaconda.org/menpo opencv3
 /opt/anaconda3/bin/conda install -c https://conda.anaconda.org/menpo opencv3
+
+# for chainermp
+apt-get install mpich
