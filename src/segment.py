@@ -47,6 +47,7 @@ def segment_images(src, dst):
     for src in src_dir.files():
         # just copy for now...
         local_src = src.path
+        raise Exception("xx"+local_src)
         algo_client.file(dst+"/"+sub("^.*/", "", local_src)).putFile(local_src)
 
 
