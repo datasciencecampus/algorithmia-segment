@@ -17,8 +17,8 @@ def load(src):
     client = Algorithmia.client()
     model = client.file(src).getFile().name
     psp_net = PSPNet(pretrained_model=model)
-    chainer.cuda.get_device_from_id(0).use()
-    psp_net.to_gpu(0)
+    #chainer.cuda.get_device_from_id(0).use()
+    #psp_net.to_gpu(0)
     return psp_net
 
 # avoid cold start
