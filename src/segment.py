@@ -39,7 +39,7 @@ def segment(src, dst):
 def segment_images(src, dst):
     algo_client = Algorithmia.client()
     src_dir = algo_client.dir(src)
-    if not src_dir.exits():
+    if not src_dir.exists():
         raise AlgorithmException("src ({}) does not exist".format(src))
     dst_dir = algo_client.dir(dst)
     if not dst_dir.exists():
