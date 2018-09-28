@@ -11,16 +11,15 @@ from .pspnet.pspnet import PSPNet
 from PIL import Image
 from glob import glob
 from re import sub
+import os
 
 
 def load(src):
     client = Algorithmia.client()
     model = client.file(src).getFile().name
-    
-    import os
     s = os.path.getsize(model)
-    raise Exception(model + " " + str(s))
-    psp_net = PSPNet(pretrained_model=model)
+    #assert os.path.getsize(model) == 262925472
+    psp_net = PSPNet(pretrained_model='cityscapes')#model)
     #chainer.cuda.get_device_from_id(0).use()
     #psp_net.to_gpu(0)
     return psp_net
