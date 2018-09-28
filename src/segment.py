@@ -11,15 +11,16 @@ from .pspnet.pspnet import PSPNet
 from PIL import Image
 from glob import glob
 from re import sub
-import os
+#import os
 
 
 def load(src):
     client = Algorithmia.client()
     model = client.file(src).getFile().name
-    s = os.path.getsize(model)
+    #s = os.path.getsize(model)
     #assert os.path.getsize(model) == 262925472
-    psp_net = PSPNet(pretrained_model='cityscapes')#model)
+    #psp_net = PSPNet(pretrained_model='cityscapes')
+    psp_net = PSPNet(pretrained_model=model)
     #chainer.cuda.get_device_from_id(0).use()
     #psp_net.to_gpu(0)
     return psp_net
@@ -45,6 +46,8 @@ def segment_images(src, dst):
     if not dst_dir.exists():
         dst_dir.create()
     for src in src_dir.files():
+        # for each DataFile
+        # https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/datafile.py
         # just copy for now...
         algo_client.file(dst+"/"+sub("^.*/", "", src.getName())).putFile(src.getFile().name)
 
