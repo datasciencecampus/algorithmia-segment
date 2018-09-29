@@ -1,6 +1,7 @@
 import Algorithmia
 from Algorithmia.errors import AlgorithmException
 
+import numpy as np
 import chainer
 from chainercv.utils import read_image
 
@@ -11,7 +12,7 @@ from .pspnet.pspnet import PSPNet
 from PIL import Image
 from glob import glob
 from re import sub
-import os
+#import os
 
 
 def load(src):
