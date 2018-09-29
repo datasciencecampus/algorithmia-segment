@@ -55,7 +55,7 @@ def load(src):
 if __name__ == 'src.segment':
     t = time.time()    
     psp_net = load('data://.my/models/pspnet101_cityscapes_713_reference.npz')
-    print("model loaded in {:d}ms".format(int(time.time()-t)))
+    print("model loaded in {:d}ms".format(int(1000*(time.time()-t))))
 
 
 def segment(src):
@@ -82,11 +82,11 @@ def segment_images(src, dst):
 
         t = time.time()
         src_file = src.getFile().name
-        print("got {} in {:d}ms".format(src.getName(), int(time.time()-t)))
+        print("got {} in {:d}ms".format(src.getName(), int(1000*(time.time()-t))))
 
         t = time.time()
         psp_pred = segment(src_file)
-        print("segmentation took {:d}ms".format(int(time.time()-t)))
+        print("segmentation took {:d}ms".format(int(1000*(time.time()-t))))
 
         t = time.time()
         buf = io.BytesIO()
@@ -96,7 +96,7 @@ def segment_images(src, dst):
         # push psp_pred bytes to dst bmp. 
         dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src.getName()))
         algo_client.file(dst+"/"+dst_file).put(buf)
-        print("uploaded {} in {:d}ms".format(dst+"/"+dst_file, int(time.time()-t)))
+        print("uploaded {} in {:d}ms".format(dst+"/"+dst_file, int(1000*(time.time()-t))))
         return # <- debug
 
 
@@ -123,6 +123,6 @@ def apply(input):
         'status': 'ok',
         'verbose': {
             '__name__': __name__,
-            'time': int(time.time()-t)
+            'time': int(1000*(time.time()-t))
         }
     }
