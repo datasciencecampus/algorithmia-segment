@@ -47,11 +47,14 @@ def load(src):
 
 # avoid cold start
 # (if running on algorithmia) - so local unit tests work
+# 
+# note: this not working - probably getting kicked off slot since we need lots
+# of heap
 if __name__ == 'src.segment':
     psp_net = load('data://.my/models/pspnet101_cityscapes_713_reference.npz')
 
 
-def segment(src, dst):
+def segment(src):
     src_img = read_image(src) # (bgr, w, h)
     psp_out = psp_net.predict([img])[0]
     psp_out = psp_out.astype('uint8')
@@ -71,7 +74,12 @@ def segment_images(src, dst):
         # for each DataFile
         # https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/datafile.py
         # just copy for now...
-        algo_client.file(dst+"/"+sub("^.*/", "", src.getName())).putFile(src.getFile().name)
+        #algo_client.file(dst+"/"+sub("^.*/", "", src.getName())).putFile(src.getFile().name)
+        src_file = src.getFile().name
+        psp_pred = segment(src_file)
+        # push psp_pred bytes to dst bmp. 
+        dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src_file))
+        algo_client.file(dst_file).put(psp_pred)
 
 
 def sanity(input):
