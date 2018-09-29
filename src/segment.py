@@ -41,6 +41,7 @@ def load(src):
         'mean': np.array([123.68, 116.779, 103.939])
     }
 
+    print("loading " + model)
     return PSPNet(pretrained_model=model, **cityscapes_conf)
 
 
