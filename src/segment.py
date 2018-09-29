@@ -56,7 +56,7 @@ if __name__ == 'src.segment':
 
 def segment(src):
     src_img = read_image(src) # (bgr, w, h)
-    psp_out = psp_net.predict([img])[0]
+    psp_out = psp_net.predict([src_img])[0]
     psp_out = psp_out.astype('uint8')
     psp_out = Image.fromarray(psp_out)
     return psp_out
