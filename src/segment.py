@@ -19,14 +19,30 @@ def load(src):
     model = client.file(src).getFile().name
     #s = os.path.getsize(model)
     #assert os.path.getsize(model) == 262925472
-    pspnet_cache = "/home/algo/chainer/dataset/pfnet/chainercv/models"
-    os.makedirs(pspnet_cache, exist_ok=True)
-    os.rename(model, pspnet_cache+"/pspnet101_cityscapes_713_reference.npz")
-    psp_net = PSPNet(pretrained_model='cityscapes')
+    #pspnet_cache = "/home/algo/chainer/dataset/pfnet/chainercv/models"
+    #os.makedirs(pspnet_cache, exist_ok=True)
+    #os.rename(model, pspnet_cache+"/pspnet101_cityscapes_713_reference.npz")
+    #psp_net = PSPNet(pretrained_model='cityscapes')
     #/home/algo/.chainer/dataset/pfnet/chainercv/models
     #psp_net = PSPNet(pretrained_model=model)
     #chainer.cuda.get_device_from_id(0).use()
     #psp_net.to_gpu(0)
+  
+    # see pspnet/pspnet.py
+    # if model (not name) provided, must also specify these.
+    # if just model name 'cityscapes', no need.
+    cityscapes_conf = {
+        'n_class': 19,
+        'input_size': (713, 713),
+        'n_blocks': [3, 4, 23, 3],
+        'mid_stride': True,
+        'pyramids': [6, 3, 2, 1],
+        'mean': np.array([123.68, 116.779, 103.939])
+    }
+
+    psp_net = PSPNet(pretrained_model=model, **cityscapes_conf)
+
+
     return psp_net
 
 # avoid cold start
