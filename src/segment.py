@@ -97,6 +97,7 @@ def segment_images(src, dst):
         dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src.getName()))
         algo_client.file(dst+"/"+dst_file).put(buf)
         print("uploaded {} in {:d}ms".format(dst+"/"+dst_file, int(time.time()-t)))
+        return # <- debug
 
 
 def sanity(input):
