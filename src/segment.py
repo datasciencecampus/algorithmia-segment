@@ -43,8 +43,10 @@ def load(src):
         'mean': np.array([123.68, 116.779, 103.939])
     }
 
-    print("loading " + model)
-    return PSPNet(pretrained_model=model, **cityscapes_conf)
+    psp_net = PSPNet(pretrained_model=model, **cityscapes_conf)
+    psp_net.to_gpu()
+
+    return psp_net
 
 
 # avoid cold start
