@@ -38,7 +38,7 @@ class ConvBNReLU(chainer.Chain):
 #                self.bn = MultiNodeBatchNormalization(
 #                    out_ch, comm, eps=1e-5, decay=0.95)
 #            else:
-                self.bn = L.BatchNormalization(out_ch, eps=1e-5, decay=0.95)
+            self.bn = L.BatchNormalization(out_ch, eps=1e-5, decay=0.95)
 
     def __call__(self, x, relu=True):
         h = self.bn(self.conv(x))
