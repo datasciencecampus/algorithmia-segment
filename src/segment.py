@@ -82,7 +82,7 @@ def segment_images(src, dst):
 
         buf = io.BytesIO()
         psp_pred.save(buf, format='BMP')
-        buf = bug.getvalue()
+        buf = buf.getvalue()
             
 
         # push psp_pred bytes to dst bmp. 
