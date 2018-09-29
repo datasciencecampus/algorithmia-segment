@@ -41,13 +41,13 @@ def load(src):
         'mean': np.array([123.68, 116.779, 103.939])
     }
 
-    psp_net = PSPNet(pretrained_model=model, **cityscapes_conf)
+    return PSPNet(pretrained_model=model, **cityscapes_conf)
 
-
-    return psp_net
 
 # avoid cold start
-psp_net = load('data://.my/models/pspnet101_cityscapes_713_reference.npz')
+# (if running on algorithmia) - so local unit tests work
+if __name__ == 'src.segment':
+    psp_net = load('data://.my/models/pspnet101_cityscapes_713_reference.npz')
 
 
 def segment(src, dst):
