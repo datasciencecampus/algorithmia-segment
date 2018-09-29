@@ -14,6 +14,7 @@ from glob import glob
 from re import sub
 #import os
 import io
+import time
 
 
 def load(src):
@@ -52,7 +53,9 @@ def load(src):
 # note: this not working - probably getting kicked off slot since we need lots
 # of heap
 if __name__ == 'src.segment':
+    t = time.time()    
     psp_net = load('data://.my/models/pspnet101_cityscapes_713_reference.npz')
+    print("model loaded in {:d}ms".format(int(time.time()-t)))
 
 
 def segment(src):
@@ -76,18 +79,24 @@ def segment_images(src, dst):
         # https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/datafile.py
         # just copy for now...
         #algo_client.file(dst+"/"+sub("^.*/", "", src.getName())).putFile(src.getFile().name)
-        src_file = src.getFile().name
-        psp_pred = segment(src_file)
-    
 
+        t = time.time()
+        src_file = src.getFile().name
+        print("got {} in {:d}ms".format(src.getName(), int(time.time()-t)))
+
+        t = time.time()
+        psp_pred = segment(src_file)
+        print("segmentation took {:d}ms".format(int(time.time()-t)))
+
+        t = time.time()
         buf = io.BytesIO()
         psp_pred.save(buf, format='BMP')
         buf = buf.getvalue()
             
-
         # push psp_pred bytes to dst bmp. 
         dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src.getName()))
         algo_client.file(dst+"/"+dst_file).put(buf)
+        print("uploaded {} in {:d}ms".format(dst+"/"+dst_file, int(time.time()-t)))
 
 
 def sanity(input):
@@ -107,10 +116,12 @@ def sanity(input):
 def apply(input):
     sanity(input)
     src, dst = input['src'], input['dst']
+    t = time.time()
     segment_images(src, dst)
     return {
         'status': 'ok',
         'verbose': {
-            '__name__': __name__
+            '__name__': __name__,
+            'time': int(time.time()-t)
         }
     }
