@@ -13,6 +13,7 @@ from PIL import Image
 from glob import glob
 from re import sub
 #import os
+import io
 
 
 def load(src):
