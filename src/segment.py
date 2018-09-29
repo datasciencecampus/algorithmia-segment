@@ -86,7 +86,7 @@ def segment_images(src, dst):
             
 
         # push psp_pred bytes to dst bmp. 
-        dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src_file))
+        dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src.getName()))
         algo_client.file(dst+"/"+dst_file).put(buf)
 
 
