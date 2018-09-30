@@ -17,7 +17,6 @@ which has been included as a git submodule.
 
 Please see example code in `client`.
 
-![street-level segments](assets/segments.jpg)
 
 
 ## General form
