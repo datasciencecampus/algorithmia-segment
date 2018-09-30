@@ -1,5 +1,7 @@
 # Segmentation algo demo
 # ======================
+# export KEY=$(cat ~/.algorithmia/config |grep api_key |awk '{print $3}' |sed 's/"//g')
+# export SERVER=$(cat ~/.algorithmia/config |grep api_server |awk '{print $3}' |sed 's/"//g')
 # python3 example.py $KEY $SERVER test_images "data://.my/test_images" "data://.algo/nocturne/segment/temp" result
 
 import Algorithmia
