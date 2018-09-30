@@ -17,7 +17,7 @@ which has been included as a git submodule.
 
 Please see example code in `client`.
 
-
+![](assets/segments.jpg)
 
 ## General form
 
