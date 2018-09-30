@@ -1,11 +1,10 @@
 import Algorithmia
 from glob import glob
 
-
-class Uploader():
+class IO():
 
     def __init__(self, api_key=None, api_address=None):
-        """Uploader convenience.
+        """IO convenience.
         
         Parameters
         ----------
@@ -34,7 +33,6 @@ class Uploader():
         # see https://docs.algorithmia.com/?python#upload-a-file
         self.algo_client.file(dst).putFile(src)
 
-
     def upload_dir(self, src_pat, dst_dir):
         """Upload collection of files to algorithma data:// location.
         
@@ -52,6 +50,52 @@ class Uploader():
         """
         return [self.upload(src) for src in glob(src_pat)]
 
+    def download(self, src, dst):
+        """Download single file from algorithmia.
+
+        Parameters
+        ----------
+        src: str
+            data://.my/stuff/xxx.png
+        dst: str
+            /tmp/xxx.png
+
+        Returns
+        -------
+        int
+            Downloaded bytes.
+            
+        """
+        with open(dst, 'wb') as f:
+            bytes_in = f.write(self.algo_client.file(src).getBytes())
+        return bytes_in
+
+    def download_dir(self, src_dir, dst_dir):
+        """Download a directory from algorithmia.
+
+        Parameters
+        ----------
+        src_dir: str
+            data://.my/stuff
+        dsr_dir: str
+            /tmp/lala
+
+        Returns
+        -------
+        int
+            Number of downloaded files
+        int
+            Total downloaded bytes.
+        """
+        i = bytes_in = 0
+        remote_dir = self.algo_client.dir(src_dir)
+        for f in remote_dir.files():
+            f_name = f.getName() 
+            src = src_dir + "/" + f_name
+            dst = dst_dir + "/" + f_name
+            bytes_in += self.download(src, dst)
+            i += 1
+        return i, bytes_in
 
 if __name__ == '__main__':
     # single file.
