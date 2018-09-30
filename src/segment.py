@@ -44,7 +44,7 @@ def load(src):
     }
 
     psp_net = PSPNet(pretrained_model=model, **cityscapes_conf)
-    psp_net.to_gpu()
+    #psp_net.to_gpu()
 
     return psp_net
 
