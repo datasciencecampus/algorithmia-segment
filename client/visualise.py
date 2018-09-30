@@ -1,5 +1,10 @@
-# Visualise segmentation algo results
-# python3 visualise.py test_images result visualise
+################################################################################
+# Visualise segmentation algo results                                          #
+# ============================================================================ #
+# E.g., python3 visualise.py test_images result visualise                      #
+#                                                                              #
+# Phil Stubbings, ONS Data Science Campus.                                     #
+################################################################################
 
 import sys
 import numpy as np
@@ -119,3 +124,4 @@ def process(input_image_dir, result_image_dir, visualise_dir):
 
 if __name__ == '__main__':
     process(*sys.argv[1:])
+    print("take a look in visualise dir...")

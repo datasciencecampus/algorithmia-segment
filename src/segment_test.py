@@ -1,7 +1,11 @@
-import sys
-sys.path.append('chainer-pspnet')
-from . import segment
+################################################################################
+# Algorithmia image segmentation algorithm tests                               #
+# ============================================================================ #
+# Phil Stubbings, ONS Data Science Campus.                                     #
+################################################################################
 
+import sys
+from . import segment
 
 from Algorithmia.errors import AlgorithmException
 from pytest import raises
