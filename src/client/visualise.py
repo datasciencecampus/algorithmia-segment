@@ -20,7 +20,7 @@ def get_labels(alpha=255):
 
     Parameters
     ----------
-    alpha, int
+    alpha: int
         Class alpha level - Useful for composite images.
        
     Returns
@@ -58,9 +58,9 @@ def colourise(bmp_file, labels):
 
     Parameters
     ----------
-    bmp_file, str
+    bmp_file: str
         Location of the bitmap image
-    labels, list
+    labels: list
         see get_labels()
 
     Returns
@@ -82,9 +82,9 @@ def composite(img_input, img_segments):
 
     Parameters
     ----------
-    img_input, Image
+    img_input: Image
         Base image
-    img_segments, Image
+    img_segments: Image
         see colourise()
 
     Returns
@@ -102,11 +102,11 @@ def process(input_image_dir, result_image_dir, visualise_dir):
 
     Parameters
     ----------
-    input_image_dir, str
+    input_image_dir: str
         Location of original street-level (.jpg) images.
-    result_image_dir, str
+    result_image_dir: str
         Location of segementation algo (.bmp) results.
-    visualise_dir, str
+    visualise_dir: str
         Target output directory.
 
     Returns
