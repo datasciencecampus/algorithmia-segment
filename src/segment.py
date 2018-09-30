@@ -127,10 +127,10 @@ def segment_images(src, dst):
 
         # target file
         dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src.getName()))
-        dst_file = algo_client.file(dst+"/"+dst_file)        
+        algo_dst_file = algo_client.file(dst+"/"+dst_file)
 
         # skip if already done.
-        if dst_file.exists():
+        if algo_dst_file.exists():
             continue
 
         # fetch local copy of input .jpg image
@@ -150,7 +150,7 @@ def segment_images(src, dst):
         buf = buf.getvalue()
             
         # push psp_pred bytes to destination .bmp
-        dst_file.put(buf)
+        algo_dst_file.put(buf)
         print("uploaded {} in {:d}ms".format(dst+"/"+dst_file, int(1000*(time.time()-t))))
 
 
