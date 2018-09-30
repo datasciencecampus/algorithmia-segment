@@ -1,0 +1,3 @@
+[submodule "src/dsc_chainer_pspnet"]
+	path = src/dsc_chainer_pspnet
+	url = https://github.com/datasciencecampus/chainer-pspnet.git
