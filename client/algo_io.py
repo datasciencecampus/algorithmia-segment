@@ -34,8 +34,6 @@ class AlgoIO():
         """
         # see https://docs.algorithmia.com/?python#upload-a-file
         try:
-            print(src)
-            print(dst)
             self.algo_client.file(dst).putFile(src)
         except DataApiError:
             return False
