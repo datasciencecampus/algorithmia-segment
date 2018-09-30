@@ -15,7 +15,7 @@ which has been included as a git submodule.
 
 ## Demo
 
-Please see example code in `client`.
+Please see example code in `src/client`.
 
 ![](https://datasciencecampus.github.io/assets/segments.jpg)
 
@@ -60,12 +60,12 @@ dataset, and as such, the labels are as follows:
 19. bicycle
 20. unknown/other.
 
-Please see the `client/visualise.py` code for a complete post-processing demo.
+Please see the `src/client/visualise.py` code for a complete post-processing demo.
 
 
 ## Running
 
-See `client/exmaple.py` for an end-to-end Python based demo.
+See `src/client/exmaple.py` for an end-to-end Python based demo.
 
 Else, the webservice can be invoked as follows:
 

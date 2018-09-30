@@ -1,4 +1,4 @@
 .pytest_cache/
 __pycache__/
-client/result/*.bmp
-client/visualise/*.jpg
+src/client/result/*.bmp
+src/client/visualise/*.jpg
