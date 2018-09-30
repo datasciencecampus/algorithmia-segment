@@ -15,13 +15,13 @@ done
 
 ### Upload
 
-Use `upload.py` to dump images.
+Use `algo_io.py` to dump images.
 
 ```bash
-export KEY=$(cat ~/.algorithmia/config |grep api_key |awk '{print $3}')
-export SERVER=$(cat ~/.algorithmia/config |grep api_server |awk '{print $3}')
+export KEY=$(cat ~/.algorithmia/config |grep api_key |awk '{print $3}' |sed 's/"//g')
+export SERVER=$(cat ~/.algorithmia/config |grep api_server |awk '{print $3}' |sed 's/"//g')
 
 for i in $(ls test_images/) ;do
-  python upload.py $KEY $SERVER test_images/$i data://.my/images/$i
+  python algo_io.py $KEY $SERVER test_images/$i data://.my/images/$i
 done
 ```
