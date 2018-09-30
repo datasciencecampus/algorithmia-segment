@@ -11,7 +11,7 @@
 # Phil Stubbings, ONS Data Science Campus.                                     #
 ################################################################################
 
-ALGO="nocturne/segment/22d097cfdd0f837f081f83ce03a3ab79dd889612"
+ALGO="nocturne/segment/20fb1f5c08956857b4b8e9d612dd088755aaae41"
 
 import Algorithmia
 import sys
@@ -28,7 +28,7 @@ algo_io.upload_dir(local_src_dir+"/*", remote_src_dir)
 
 # 2. invoke algo.
 print("start image segmentation...")
-algo = algo_client.algo(algo).set_options(timeout=600, stdout=True)
+algo = algo_client.algo(ALGO).set_options(timeout=600, stdout=True)
 result = algo.pipe(dict(src=remote_src_dir, dst=remote_dst_dir))
 
 print(result.result)
