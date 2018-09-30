@@ -7,7 +7,7 @@ from chainercv.utils import read_image
 
 # see caveats section in:
 # https://algorithmia.com/developers/algorithm-development/languages/python/
-from .pspnet.pspnet import PSPNet
+from .chainer_pspnet.pspnet import PSPNet
 
 from PIL import Image
 from glob import glob

@@ -1,0 +1,3 @@
+[submodule "src/chainer_pspnet"]
+	path = src/chainer_pspnet
+	url = https://github.com/mitmul/chainer-pspnet.git
