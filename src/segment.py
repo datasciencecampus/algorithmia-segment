@@ -43,7 +43,7 @@ def load(src, conf, use_gpu=False):
         An instance of PSPNet
     """
     algo_client = Algorithmia.client()
-    model = alogo_client.file(src).getFile().name
+    model = algo_client.file(src).getFile().name
  
     t = time.time()
     psp_net = PSPNet(pretrained_model=model, **conf)
