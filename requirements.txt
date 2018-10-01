@@ -4,5 +4,6 @@ cupy-cuda80
 chainer
 chainercv
 tqdm
+chainermn
 #-e git+git://github.com/chainer/chainercv#egg=chainercv
 #-e git+git://github.com/chainer/chainermn#egg=chainermn
