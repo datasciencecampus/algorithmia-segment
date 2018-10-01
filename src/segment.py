@@ -50,7 +50,7 @@ def load(src, conf, use_gpu=False):
     print("model loaded in {:d}ms".format(int(1000*(time.time()-t))))
 
     if use_gpu:
-        chainer.cuda.get_device_from_id(0).use()
+        #chainer.cuda.get_device_from_id(0).use()
         psp_net.to_gpu()
 
     return psp_net
@@ -66,7 +66,7 @@ pspnet_conf = {
         'pyramids': [6, 3, 2, 1],
         'mean': np.array([123.68, 116.779, 103.939])
     },
-    'use_gpu': False
+    'use_gpu': True
 }
 # will persist whilst in slot. 
 # avoids cold-starts. see:
