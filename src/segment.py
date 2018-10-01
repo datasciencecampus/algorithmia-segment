@@ -66,7 +66,7 @@ pspnet_conf = {
         'pyramids': [6, 3, 2, 1],
         'mean': np.array([123.68, 116.779, 103.939])
     },
-    'use_gpu': True
+    'use_gpu': False 
 }
 # will persist whilst in slot. 
 # avoids cold-starts. see:
