@@ -17,6 +17,7 @@ else
     exit 1
 fi
 
+# update git submodules
 git submodule init
 git submodule update
 
