@@ -90,7 +90,7 @@ Using the Algorithmia `algo` client:
 
 ```
 algo run nocturne/segment/$(git rev-parse HEAD) -d \
-  '{"src": "data://.my/images", "dst": "data://.my/out"}'
+  '{"src": "data://.my/test_images", "dst": "data://.my/out"}'
 ```
 
 

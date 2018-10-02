@@ -126,6 +126,7 @@ def segment_images(src, dst):
     # https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/datafile.py
     t = time.time()
     src_files = src_dir.files()
+    i = 0
     for src in src_files:
 
         # target file
@@ -156,7 +157,9 @@ def segment_images(src, dst):
         algo_dst_file.put(buf)
         print("uploaded {} in {:d}ms".format(dst+"/"+dst_file, int(1000*(time.time()-t))))
 
-    return int((1000*(time.time()-t))/len(src_files))
+        i += 1
+
+    return int((1000*(time.time()-t))/min(1, i))
 
 
 def sanity(input):
