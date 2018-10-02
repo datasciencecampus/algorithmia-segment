@@ -19,6 +19,7 @@ Please see example code in `src/client`.
 
 ![](https://datasciencecampus.github.io/assets/segments.jpg)
 
+
 ## General form
 
 The algorithm accepts 2 arguments: `src` and `dst`.
