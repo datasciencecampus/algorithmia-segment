@@ -50,7 +50,7 @@ def load(src, conf, use_gpu=False):
     print("model loaded in {:d}ms".format(int(1000*(time.time()-t))))
 
     if use_gpu:
-        chainer.cuda.get_device_from_id(0).use()
+        #chainer.cuda.get_device_from_id(0).use()
         psp_net.to_gpu()
 
     return psp_net
@@ -66,7 +66,7 @@ pspnet_conf = {
         'pyramids': [6, 3, 2, 1],
         'mean': np.array([123.68, 116.779, 103.939])
     },
-    'use_gpu': False
+    'use_gpu': True 
 }
 # will persist whilst in slot. 
 # avoids cold-starts. see:
@@ -107,9 +107,10 @@ def segment_images(src, dst):
     dst: str
         The destination/target directory to put segmentation results (.bmp) in.
 
-    Results
+    Returns
     -------
-        None
+    int
+        Average time, in milliseconds, to process each image.
     """
     algo_client = Algorithmia.client()
 
@@ -123,7 +124,9 @@ def segment_images(src, dst):
 
     # src = DataFile. see:
     # https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/datafile.py
-    for src in src_dir.files():
+    t = time.time()
+    src_files = src_dir.files()
+    for src in src_files:
 
         # target file
         dst_file = sub(".jpg$", ".bmp", sub("^.*/", "", src.getName()))
@@ -153,6 +156,8 @@ def segment_images(src, dst):
         algo_dst_file.put(buf)
         print("uploaded {} in {:d}ms".format(dst+"/"+dst_file, int(1000*(time.time()-t))))
 
+    return int((1000*(time.time()-t))/len(src_files))
+
 
 def sanity(input):
     """Boilerplate input sanity check.
@@ -177,12 +182,13 @@ def apply(input):
     src, dst = input['src'], input['dst']
 
     t = time.time()
-    segment_images(src, dst)
+    image_time = segment_images(src, dst)
     
     return {
         'status': 'ok',
         'verbose': {
             '__name__': __name__,
-            'time': int(1000*(time.time()-t))
+            'total_time': int(1000*(time.time()-t)),
+            'image_time': image_time
         }
     }

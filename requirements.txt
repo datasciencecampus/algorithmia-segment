@@ -1,8 +1,10 @@
 algorithmia>=1.0.0,<2.0
 six
-#cupy
+#cupy-cuda80
+cupy
 chainer
 chainercv
 tqdm
+#chainermn
 #-e git+git://github.com/chainer/chainercv#egg=chainercv
 #-e git+git://github.com/chainer/chainermn#egg=chainermn

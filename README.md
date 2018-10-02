@@ -84,7 +84,6 @@ Using `curl`:
 curl -X POST -d '{"images":["x"]}' -H 'Content-Type: text/json' \
      -H 'Authorization: Simple $API_KEY' \
   https://api.methods.officialstatistics.org/v1/algo/nocturne/segment/$VERSION
-
 ```
 
 Using the Algorithmia `algo` client:
