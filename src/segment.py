@@ -179,7 +179,6 @@ def apply(input):
     """Algorithmia entry point."""
     sanity(input)
     src, dst = input['src'], input['dst']
-
     t = time.time()
     image_time = segment_images(src, dst)
     
