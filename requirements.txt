@@ -1,7 +1,7 @@
 algorithmia>=1.0.0,<2.0
 six
-#cupy-cuda80
-cupy
+cupy-cuda80
+#cupy
 chainer
 chainercv
 tqdm
