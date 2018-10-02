@@ -159,7 +159,7 @@ def segment_images(src, dst):
 
         i += 1
 
-    return int((1000*(time.time()-t))/min(1, i))
+    return int((1000*(time.time()-t))/max(1, i))
 
 
 def sanity(input):
