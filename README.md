@@ -40,26 +40,25 @@ Each pixel value will range between `0` and `255` and map to a specific label.
 The current implementation makes use of a network pre-trained on the Cityscapes
 dataset, and as such, the labels are as follows:
 
-1. road
-2. sidewalk
-3. building
-4. wall
-5. fence
-6. pole
-7. traffic light
-8. traffic sign
-9. vegetation
-10. terrain
-11. sky
-12. person
-13. rider
-14. car
-15. truck
-16. bus
-17. train
-18. motorcycle
-19. bicycle
-20. unknown/other.
+0. road
+1. sidewalk
+2. building
+3. wall
+4. fence
+5. pole
+6. traffic light
+7. traffic sign
+8. vegetation
+9. terrain
+10. sky
+11. person
+12. rider
+13. car
+14. truck
+15. bus
+16. train
+17. motorcycle
+18. bicycle
 
 Please see the `src/client/visualise.py` code for a complete post-processing demo.
 

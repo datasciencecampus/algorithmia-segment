@@ -11,7 +11,7 @@
 # Phil Stubbings, ONS Data Science Campus.                                     #
 ################################################################################
 
-ALGO="nocturne/segment/8b7a633b3d41742c4585e833e84af8471184471f"
+ALGO="nocturne/segment/1397637817d54197cbe1d35a4eeb3c7fddc0f34a"
 
 import Algorithmia
 import sys
