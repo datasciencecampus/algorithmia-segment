@@ -177,7 +177,6 @@ def sanity(input):
 
 def apply(input):
     """Algorithmia entry point."""
-
     sanity(input)
     src, dst = input['src'], input['dst']
     t = time.time()
