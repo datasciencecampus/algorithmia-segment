@@ -66,7 +66,7 @@ pspnet_conf = {
         'pyramids': [6, 3, 2, 1],
         'mean': np.array([123.68, 116.779, 103.939])
     },
-    'use_gpu': False 
+    'use_gpu': True 
 }
 # will persist whilst in slot. 
 # avoids cold-starts. see:
@@ -177,10 +177,8 @@ def sanity(input):
 
 def apply(input):
     """Algorithmia entry point."""
-
     sanity(input)
     src, dst = input['src'], input['dst']
-
     t = time.time()
     image_time = segment_images(src, dst)
     
