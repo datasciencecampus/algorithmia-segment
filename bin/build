@@ -17,6 +17,11 @@ else
     exit 1
 fi
 
+# my custom build ##
+git submodule init
+git submodule update
+####################
+
 pip install $extra_args -r requirements.txt --target dependencies
 
 zip -r algorithm.zip *
