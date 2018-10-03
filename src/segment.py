@@ -57,7 +57,7 @@ def load(src, conf, use_gpu=False):
 
 
 pspnet_conf = {
-    'src': 'data://.my/models/pspnet101_cityscapes_713_reference.npz',
+    'src': 'data://nocturne/models/pspnet101_cityscapes_713_reference.npz',
     'conf': {
         'n_class': 19,
         'input_size': (713, 713),
