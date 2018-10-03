@@ -15,6 +15,8 @@ from chainercv.utils import read_image
 # https://algorithmia.com/developers/algorithm-development/languages/python/
 from .dsc_chainer_pspnet.pspnet import PSPNet
 
+from .util import sanity
+
 from PIL import Image
 from glob import glob
 from re import sub
@@ -160,22 +162,6 @@ def segment_images(src, dst):
         i += 1
 
     return int((1000*(time.time()-t))/max(1, i))
-
-
-def sanity(input):
-    """Boilerplate input sanity check.
-    
-    see:
-
-    https://algorithmia.com/developers/algorithm-development/algorithm-basics/algorithm-errors/
-    https://github.com/algorithmiaio/algorithmia-python/blob/master/Algorithmia/errors.py
-    """
-    if type(input) is not dict:
-        raise AlgorithmException("Only JSON accepted", 'UnsupportedError')
-    if 'src' not in input:
-        raise AlgorithmException("Must specify source image dir", 'InputError')
-    if 'dst' not in input:
-        raise AlgorithmException("Must specify destination dir", 'InputError')
 
 
 def apply(input):
